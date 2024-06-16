@@ -1,0 +1,41 @@
+/* src/components/Employee.module.scss */
+
+.ManagerContainer{
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tasksContainer {
+  margin-top: 20px;
+}
+
+.tasksContainer h2 {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.tasksContainer ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.tasksContainer li {
+  margin-bottom: 5px;
+}
+
+.otherDetails {
+  margin-top: 20px;
+}
+
+.otherDetails p {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* Add more styles as needed */
