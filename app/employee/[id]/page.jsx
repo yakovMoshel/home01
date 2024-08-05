@@ -1,29 +1,30 @@
 import React from 'react'
 import styles from './style.module.scss';
-import { users } from '@/app/data';
+// import { users } from '@/app/data';
+import { OneEmployee } from '@/server/BL/employeeService';
+import { connectToMongo } from '@/server/DL/conectToMongo';
 
-export default function Employee({ params }) {
-  const { id } = params;
-  const employee = users.find(user => user.id === parseInt(id)); // Find employee by ID
+export default async function Employee({ params }) {
+  await connectToMongo();
 
-  if (!employee) {
-    return <div>Loading...</div>; // Handle case where employee is not found
-  }
+  const employee = await OneEmployee({ _id: params.id });
+
+  const {name, email, tasks} = employee;
 
   return (
     <div className={styles.employeeContainer}>
-      <h1>Welcome, {employee.fullName}!</h1>
+      <h1>Welcome, {name}!</h1>
       <div className={styles.tasksContainer}>
         <h2>Tasks:</h2>
         <ol>
-          {employee.tasks.map((task, index) => (
+          {tasks.map((task, index) => (
             <li key={index}> {task}</li>
           ))}
         </ol>
       </div>
       <div className={styles.otherDetails}>
-        <p>Email: {employee.email}</p>
-        {/* Add any other details you want to display */}
+        <h3>Email: </h3>
+        {email}
       </div>
     </div>
   );

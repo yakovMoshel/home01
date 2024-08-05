@@ -1,9 +1,19 @@
-import Form from "@/componets/form";
 
-export default function Login() {
+import Form from "@/componets/form";
+import { AllEmployees } from "@/server/BL/employeeService";
+import { AllManagers } from "@/server/BL/ManagerService";
+
+import { connectToMongo } from "@/server/DL/conectToMongo";
+
+export default async function Login() {
+  await connectToMongo();
+
+  const allEmployees = await AllEmployees()
+  const allManagers = await AllManagers()
+
   return (
-    <div>
-      <Form />
+    <div style={{ display: "flex",alignItems: "center"  ,justifyContent: "center" }}>
+      <Form employee={allEmployees}  manager={allManagers}/>
     </div>
   );
 }

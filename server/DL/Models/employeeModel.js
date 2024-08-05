@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
-
-const employeeSchema = new mongoose.Schema({
+const EmployeeSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true
@@ -19,12 +18,16 @@ const employeeSchema = new mongoose.Schema({
     },
     role: {
         type: String,
-        default: 'employee'
     },
     tasks: {
         type: [String],
         default: []
+    },
+    status: {  
+        type: String,
+        default: 'employee'
     }
 });
 
-export const employeeModel = mongoose.model.employee || mongoose.model('Employee', employeeSchema);
+export const EmployeeModel = mongoose.models.Employee || mongoose.model('Employee', EmployeeSchema);
+
