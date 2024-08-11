@@ -10,8 +10,6 @@ export default async function Manager({ params }) {
 
   const { name, email, tasks = [], employees = [] } = manager;
 
-  console.log("tasks:", tasks)
-
   return (
     <div className={styles.ManagerContainer}>
       <h1>Welcome {name }!</h1>

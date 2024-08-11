@@ -4,13 +4,11 @@ import { EmployeeModel } from '@/server/DL/Models/employeeModel';
 export const getManagerWithEmployees = async (_id) => {
   try {
     const manager = await ManagerModel.findOne({ _id }).lean().exec();
-    // חפש את העובדים לפי ה-IDs שנמצאים בשדה employees של המנהל
     const employees = await EmployeeModel.find({ _id: { $in: manager.employees } }).lean().exec();
 
     // החלף את ה-IDs של העובדים עם המידע המלא
     manager.employees = employees;
 
-    console.log("getManager: ", manager);
     return manager;
   } catch (error) {
     console.error('Error fetching manager and employees:', error);
@@ -21,7 +19,6 @@ export const getManagerWithEmployees = async (_id) => {
 
 export const getAllManagers = async () => {
     const allManagers = await ManagerModel.find();
-    console.log("AllManagers: ", allManagers);
     return allManagers;
  }
  

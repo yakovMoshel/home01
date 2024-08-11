@@ -1,4 +1,4 @@
-import { EmployeeModel } from "@/server/DL/Models/EmployeeModel";
+import { EmployeeModel } from "@/server/DL/Models/employeeModel";
 export const getOneEmployee = async (_id) => {
     const employee = await EmployeeModel.findOne({ _id});
     return employee;   
